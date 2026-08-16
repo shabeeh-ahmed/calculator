@@ -258,15 +258,11 @@ class Calculator(QWidget):
             self.output.setText(self.x)
 
 
-
-
-
-
-
     def clear(self):
         self.x=''
         self.output.setText(self.x)
         self.result=True
+        self.allow_dot=True
 
 
 
@@ -288,16 +284,14 @@ class Calculator(QWidget):
 
     def equal(self):
         try:
-            result = str(eval(self.x))
+            result = eval(self.x)
+            result=str(round(result,2))
             self.result = False
             self.output.setText(result)
             self.x = result
 
         except SyntaxError:
             pass
-
-
-
 
 
 
