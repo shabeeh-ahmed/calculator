@@ -71,7 +71,7 @@ Steps to contribute:
 4. Push and open a pull request.
 
 ## License
-No license file in this repository. If you want others to use or contribute, add a LICENSE file (e.g., MIT, Apache-2.0). If you want, I can add a recommended license for you.
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
 ## Contact
 Repository owner: @shabeeh-ahmed
