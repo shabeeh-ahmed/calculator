@@ -1,6 +1,11 @@
 # Calculator (PyQt5)
-<img width="568" height="940" alt="image" src="https://github.com/user-attachments/assets/86c9341c-3293-4d56-ab40-16da6c7970b9" />
-<img width="562" height="932" alt="image" src="https://github.com/user-attachments/assets/ed3503af-bf8d-4a9d-b737-cb153cfdd8db" />
+
+<p align="center">
+  <img src="<img width="568" height="940" alt="image" src="https://github.com/user-attachments/assets/86c9341c-3293-4d56-ab40-16da6c7970b9" />" width="45%" />
+<img src="<img width="562" height="932" alt="image" src="https://github.com/user-attachments/assets/ed3503af-bf8d-4a9d-b737-cb153cfdd8db" />" width="45%" />
+</p>
+
+
 
 
 
