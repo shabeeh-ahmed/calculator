@@ -23,48 +23,30 @@ class Calculator(QWidget):
         self.output.setReadOnly(True)
 
         #----------number-----------
-        self.o0 = QPushButton('0')
-        self.o0.clicked.connect(self.zero)
-        self.o00=QPushButton('00')
-        self.o00.clicked.connect(self.two_zero)
-        self.o1 = QPushButton('1')
-        self.o1.clicked.connect(self.one)
-        self.o2 = QPushButton('2')
-        self.o2.clicked.connect(self.two)
-        self.o3 = QPushButton('3')
-        self.o3.clicked.connect(self.three)
-        self.o4 = QPushButton('4')
-        self.o4.clicked.connect(self.four)
-        self.o5 = QPushButton('5')
-        self.o5.clicked.connect(self.five)
-        self.o6 = QPushButton('6')
-        self.o6.clicked.connect(self.six)
-        self.o7 = QPushButton('7')
-        self.o7.clicked.connect(self.seven)
-        self.o8 = QPushButton('8')
-        self.o8.clicked.connect(self.eight)
-        self.o9 = QPushButton('9')
-        self.o9.clicked.connect(self.nine)
-        self.odot = QPushButton('.')
-        self.odot.clicked.connect(self.dot)
-        #------------------------
-        #--------sign---------------
-        self.plus=QPushButton('+')
-        self.plus.clicked.connect(self.add)
-        self.minus = QPushButton('-')
-        self.minus.clicked.connect(self.substract)
-        self.mul = QPushButton('x')
-        self.mul.clicked.connect(self.multiply)
-        self.div = QPushButton('÷')
-        self.div.clicked.connect(self.division)
-        self.perc = QPushButton('%')
-        self.eq = QPushButton('=')
-        self.eq.clicked.connect(self.equal)
+        self.o0 = QPushButton('0',self);self.o0.clicked.connect(self.zero)
+        self.o00=QPushButton('00',self);self.o00.clicked.connect(self.two_zero)
+        self.o1 = QPushButton('1',self);self.o1.clicked.connect(self.one)
+        self.o2 = QPushButton('2',self);self.o2.clicked.connect(self.two)
+        self.o3 = QPushButton('3',self);self.o3.clicked.connect(self.three)
+        self.o4 = QPushButton('4',self);self.o4.clicked.connect(self.four)
+        self.o5 = QPushButton('5',self);self.o5.clicked.connect(self.five)
+        self.o6 = QPushButton('6',self);self.o6.clicked.connect(self.six)
+        self.o7 = QPushButton('7',self);self.o7.clicked.connect(self.seven)
+        self.o8 = QPushButton('8',self);self.o8.clicked.connect(self.eight)
+        self.o9 = QPushButton('9',self);self.o9.clicked.connect(self.nine)
 
-        self.c=QPushButton('C')
-        self.c.clicked.connect(self.clear)
-        self.backspace=QPushButton('⌫')
-        self.backspace.clicked.connect(self.remove)
+        self.odot = QPushButton('.',self);self.odot.clicked.connect(self.dot)
+
+        #---------------------------
+        #--------sign---------------
+        self.plus=QPushButton('+',self);self.plus.clicked.connect(self.add)
+        self.minus = QPushButton('-',self);self.minus.clicked.connect(self.substract)
+        self.mul = QPushButton('x',self);self.mul.clicked.connect(self.multiply)
+        self.div = QPushButton('÷',self);self.div.clicked.connect(self.division)
+        self.perc = QPushButton('%',self)
+        self.eq = QPushButton('=',self);self.eq.clicked.connect(self.equal)
+        self.c=QPushButton('C',self);self.c.clicked.connect(self.clear)
+        self.backspace=QPushButton('⌫',self);self.backspace.clicked.connect(self.remove)
         #-------------------
 
         self.design()
@@ -97,39 +79,25 @@ class Calculator(QWidget):
     }
         """)
 
-
         box=QVBoxLayout()
         box.addWidget(self.output)
-#-------------------grid -------------------------------------
+
+#-------------------grid position-------------------------------------
         self.grid = QGridLayout()
-        self.grid.addWidget(self.c, 0, 0)
-        self.grid.addWidget(self.perc, 0, 1)
-        self.grid.addWidget(self.backspace, 0, 2)
-        self.grid.addWidget(self.div, 0, 4)
 
-        self.grid.addWidget(self.o7, 1, 0)
-        self.grid.addWidget(self.o8, 1, 1)
-        self.grid.addWidget(self.o9, 1, 2)
-        self.grid.addWidget(self.mul, 1, 4)
-
-        self.grid.addWidget(self.o4, 2, 0)
-        self.grid.addWidget(self.o5, 2, 1)
-        self.grid.addWidget(self.o6, 2, 2)
-        self.grid.addWidget(self.minus, 2, 4)
-
-        self.grid.addWidget(self.o1, 3, 0)
-        self.grid.addWidget(self.o2, 3, 1)
-        self.grid.addWidget(self.o3, 3, 2)
-        self.grid.addWidget(self.plus, 3, 4)
-
-        self.grid.addWidget(self.o00, 4, 0)
-        self.grid.addWidget(self.o0,4,1)
-        self.grid.addWidget(self.odot,4,2)
-        self.grid.addWidget(self.eq, 4, 4)
+        x = [self.c, self.perc, self.backspace, self.div, self.o7, self.o8, self.o9, self.mul, self.o4, self.o5,
+             self.o6, self.minus, self.o1, self.o2, self.o3, self.plus, self.o00, self.o0, self.odot, self.eq]
+        n = 0
+        for i in range(0, 5):
+            for j in range(0, 5):
+                if j == 3:continue
+                self.grid.addWidget(x[n], i, j)
+                n+=1
 
         box.addLayout(self.grid)
         self.setLayout(box)
-# ---------------------- -------------------------------------
+
+# ----------------------------------------------------------------
 
     #----------numbers--------------
     def zero(self):
@@ -155,7 +123,7 @@ class Calculator(QWidget):
     def nine(self):
         self.verify_num(9)
 
-    # ----------numbers--------------
+    # ---------------------------------
 
     # ------------ sign------------------
     def add(self):
@@ -167,49 +135,15 @@ class Calculator(QWidget):
     def division(self):
         self.verify_sign('/')
 
-    # ------------ sign------------------
-
-
+    # ------------ special ------------------
     def dot(self):
-        #to do:
-        #1)allow single dot before a sign and after a sign
-        #2)if no sign there allow one .
-        #cleared✅
-        if self.allow_dot:
-            self.x += '.'
-            self.output.setText(self.x)
-            self.allow_dot=False
-
+        self.verify_special('.')
     def remove(self):
-        if self.x:
-            self.x = self.x[:-1]
-            self.output.setText(self.x)
-
-
+        self.verify_special('⌫')
     def clear(self):
-        self.x=''
-        self.output.setText(self.x)
-        self.result=True
-        self.allow_dot=True
-
+        self.verify_special('c')
     def equal(self):
-        try:
-            result = eval(self.x)
-            result=str(round(result,2))
-            #if int(res)==float(res)==int(res)
-            if int(float(result))==float(result):
-                result=str(int(float(result)))
-            else:result=result
-
-
-            self.result = False
-            self.output.setText(result)
-            self.x = result
-
-        except ZeroDivisionError:#handling 0 div error
-            self.output.setText('Cannot divide by zero')
-        except SyntaxError:
-            pass
+        self.verify_special('=')
 
     #-----------------------------------------------------------------------------
                             #operation for numbers
@@ -238,8 +172,44 @@ class Calculator(QWidget):
         self.sign = str(sign)
         self.output.setText(self.x)
         self.allow_dot=True
-
     #-----------------------------------------------------------------------------------
+                          #operation for ( ⌫,  c , . , = )
+    #-----------------------------------------------------------------------------------
+    def verify_special(self,symbol):
+        if symbol=='⌫':
+            if self.x:
+                self.x = self.x[:-1]
+                self.output.setText(self.x)
+        if symbol=='c':
+            self.x = ''
+            self.output.setText(self.x)
+            self.result = True
+            self.allow_dot = True
+        if symbol=='.':
+            if self.allow_dot:
+                self.x += '.'
+                self.output.setText(self.x)
+                self.allow_dot = False
+        if symbol=='=':
+            try:
+                result = eval(self.x)
+                result = str(round(result, 2))
+                # if int(res)==float(res)==int(res)
+                if int(float(result)) == float(result):
+                    result = str(int(float(result)))
+                else:
+                    result = result
+
+                self.result = False
+                self.output.setText(result)
+                self.x = result
+
+            except ZeroDivisionError:  # handling 0 div error
+                self.output.setText('Cannot divide by zero')
+            except SyntaxError:
+                pass
+
+    #--------------------------------------------------------------------------------
 
 window=QApplication([])
 app=Calculator()
